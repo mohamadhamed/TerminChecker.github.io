@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termin Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="tca-header">
+  <div class="rail"></div>
+  <svg id="bahn" class="car" viewBox="0 0 300 120" aria-label="Wuppertaler Schwebebahn">
+    <rect x="60"  y="0" width="24" height="34" rx="6" fill="#9aa7b1"/>
+    <rect x="138" y="0" width="24" height="34" rx="6" fill="#9aa7b1"/>
+    <rect x="216" y="0" width="24" height="34" rx="6" fill="#9aa7b1"/>
+    <g id="car-body">
+      <rect x="20" y="34" width="260" height="70" rx="14" fill="#0a4f8a"/>
+      <rect x="20" y="74" width="260" height="6" rx="3" fill="#2f93ff" opacity="0.8"/>
+      <rect x="34"  y="46" width="48" height="22" rx="4" fill="#dff3ff"/>
+      <rect x="90"  y="46" width="48" height="22" rx="4" fill="#dff3ff"/>
+      <rect x="146" y="46" width="48" height="22" rx="4" fill="#dff3ff"/>
+      <rect x="202" y="46" width="48" height="22" rx="4" fill="#dff3ff"/>
+      <rect x="210" y="82" width="56" height="14" rx="3" fill="#111"/>
+      <text x="238" y="92" font-size="9" text-anchor="middle" fill="#ffd54f" font-family="system-ui, Arial">Wuppertal</text>
+      <circle class="headlight" cx="44" cy="89" r="6" fill="#ffd54f"/>
+    </g>
+  </svg>
+</header>
+
+<main>
+  <h1>Termin-Checker Alarm</h1>
+  <p>TerminChecker überwacht online freie Termine und benachrichtigt automatisch per E-Mail.</p>
+</main>
+
+<div class="form">
+  <form id="checkerForm">
+    <fieldset>
+      <legend>Termin checking</legend>
+      <label for="url">URL:</label>
+      <input type="text" id="url" value="https://www.example.com/termine">
+      <label for="search">Suchbegriff:</label>
+      <select id="search">
+        <optgroup label="Meldeangelegenheiten">
+          <option value="Abmeldung">Abmeldung</option>
+          <option value="Änderung KFZ-Schein bei Ummeldung innerhalb Wuppertal">Änderung KFZ-Schein bei Ummeldung innerhalb Wuppertal</option>
+          <option value="Anmeldung aus dem Inland">Anmeldung aus dem Inland</option>
+          <option value="Anmeldung aus dem Ausland">Anmeldung aus dem Ausland</option>
+          <option value="Klärung einer Meldeangelegenheit">Klärung einer Meldeangelegenheit</option>
+          <option value="Ummeldung">Ummeldung</option>
+        </optgroup>
+        <optgroup label="Ausweisangelegenheiten">
+          <option value="Ausweisdokument für Minderjährige">Ausweisdokument für Minderjährige</option>
+          <option value="Beantragung Personalausweis">Beantragung Personalausweis</option>
+          <option value="Vorläufiger Personalausweis">Vorläufiger Personalausweis</option>
+          <option value="Beantragung Reisepass">Beantragung Reisepass</option>
+          <option value="Vorläufiger Reisepass">Vorläufiger Reisepass</option>
+          <option value="Personalausweis und Reisepass">Personalausweis und Reisepass</option>
+          <option value="Personalausweis und vorläufiger Personalausweis">Personalausweis und vorläufiger Personalausweis</option>
+          <option value="Neusetzen der PIN-Nummer">Neusetzen der PIN-Nummer</option>
+          <option value="Beantragung eID-Karte für EU-Ausländer">Beantragung eID-Karte für EU-Ausländer</option>
+          <option value="Abholung von fertigen Ausweisen und Pässen">Abholung von fertigen Ausweisen und Pässen</option>
+          <option value="Abholung der fertigen eID-Karte für EU-Ausländer">Abholung der fertigen eID-Karte für EU-Ausländer</option>
+        </optgroup>
+        <optgroup label="Sonstiges">
+          <option value="Führungszeugnis">Führungszeugnis</option>
+          <option value="Nachreichen von Urkunden">Nachreichen von Urkunden</option>
+        </optgroup>
+        <optgroup label="Bescheinigungen">
+          <option value="Lebens-, Aufenthalts- und Meldebescheinigung">Lebens-, Aufenthalts- und Meldebescheinigung</option>
+          <option value="Amtliche Beglaubigung">Amtliche Beglaubigung</option>
+          <option value="Unterschriftsbeglaubigung">Unterschriftsbeglaubigung</option>
+        </optgroup>
+      </select>
+      <label for="emailTo">Empfänger E-Mail:</label>
+      <input type="email" id="emailTo" value="deine.email@example.com">
+      <label for="interval">Intervall (Minuten):</label>
+      <input type="number" id="interval" value="5" min="1">
+
+      <div class="buttons">
+        <button type="button" id="startBtn">Start</button>
+        <button type="button" id="stopBtn" disabled>Stop</button>
+        <button type="button" id="clearBtn">Clear Log</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div id="log"></div>
+<footer class="footer">
+  Erstellt von Mohamad Hamed &#169;
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
